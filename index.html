@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="bg">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#dceefa">
+<title>Хо-хо-хо! Коледа идва! — Мечи за приятели</title>
+<style>
+:root{--blue:#123b70;--red:#bd1d2d;--gold:#e9c46b;--ice:#eaf6ff}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:#dceefa;color:var(--blue);font-family:Arial,Helvetica,sans-serif}
+.page{margin:auto;overflow:hidden;background:linear-gradient(#e9f6ff,#dceefa 45%,#f5fbff 100%);box-shadow:0 8px 32px #244a6b24}
+.poster-wrap{position:relative;line-height:0;background:#dceefa}
+.poster{display:block;width:100%;height:auto}
+/* Ненатрапчиви снежинки върху оригиналната визия; самият дизайн не се променя. */
+.snow{position:absolute;inset:0;overflow:hidden;pointer-events:none}
+.flake{position:absolute;top:-30px;color:white;text-shadow:0 0 5px #78a9cf;opacity:.85;animation:fall linear infinite}
+.flake:nth-child(1){left:8%;font-size:17px;animation-duration:17s}
+.flake:nth-child(2){left:27%;font-size:13px;animation-duration:22s;animation-delay:-7s}
+.flake:nth-child(3){left:51%;font-size:19px;animation-duration:19s;animation-delay:-11s}
+.flake:nth-child(4){left:74%;font-size:14px;animation-duration:24s;animation-delay:-5s}
+.flake:nth-child(5){left:91%;font-size:18px;animation-duration:20s;animation-delay:-13s}
+@keyframes fall{to{transform:translateY(1750px) rotate(300deg)}}
+/* Прозрачна активна зона върху нарисувания бутон в оригиналния плакат. */
+.hotspot{position:absolute;left:27%;top:76.5%;width:48%;height:7.4%;border-radius:50px;display:block;cursor:pointer}
+.hotspot:focus{outline:4px solid #fff;outline-offset:3px}
+.lights{display:flex;justify-content:center;gap:13px;padding:14px 0 0}
+.bulb{width:11px;height:16px;border-radius:50%;box-shadow:0 0 9px currentColor;animation:blink 2s infinite alternate}
+.bulb:nth-child(1){background:#e83b3b;color:#e83b3b}
+.bulb:nth-child(2){background:#ffca36;color:#ffca36;animation-delay:.4s}
+.bulb:nth-child(3){background:#35b95d;color:#35b95d;animation-delay:.8s}
+.bulb:nth-child(4){background:#398de2;color:#398de2;animation-delay:1.2s}
+.bulb:nth-child(5){background:#e83b3b;color:#e83b3b;animation-delay:1.6s}
+@keyframes blink{from{opacity:.5;filter:brightness(.8)}to{opacity:1;filter:brightness(1.5)}}
+.continuation{position:relative;margin-top:-2px;padding:10px clamp(14px,4vw,42px) 42px;background:linear-gradient(#dceefa 0%,#eaf6ff 16%,#f8fcff 100%)}
+.intro{text-align:center;max-width:760px;margin:8px auto 20px;line-height:1.5}
+h2{margin:0 0 14px;text-align:center;color:var(--red);font-size:clamp(23px,3.5vw,32px)}
+.panel{max-width:850px;margin:20px auto;background:#ffffffdf;border:2px solid #fff;border-radius:20px;padding:clamp(16px,3vw,24px);box-shadow:0 5px 18px #315d8020}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.tile{padding:15px 12px;text-align:center;line-height:1.45;background:#f3f9ff;border:1px solid #d4e6f4;border-radius:14px}
+.tile b{display:block;margin-bottom:6px;color:#153d70}
+.product-pic{display:block;width:min(100%,620px);height:auto;margin:0 auto 14px;cursor:zoom-in;border-radius:8px}
+.product-pic:focus{outline:3px solid var(--gold)}
+.offer{max-width:760px;margin:22px auto;padding:22px;text-align:center;background:linear-gradient(135deg,#c92332,#a51324);border:3px solid var(--gold);border-radius:22px;color:#fff;box-shadow:0 7px 20px #8e152333}
+.offer strong{display:block;font-size:clamp(29px,5vw,42px);margin:8px}
+.cta{display:inline-block;margin-top:10px;padding:13px 24px;border-radius:30px;background:#fff;color:#a71627;text-decoration:none;font-weight:900;border:2px solid var(--gold)}
+.faq details{padding:13px 4px;border-bottom:1px solid #d7e5ef}
+.faq summary{cursor:pointer;font-weight:800;color:#123b70}
+form{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+label{font-weight:700;font-size:14px}
+input,textarea{display:block;width:100%;margin-top:5px;padding:12px;border:1px solid #a8bfd2;border-radius:9px;background:white;font:inherit}
+.wide{grid-column:1/-1}
+.check{display:flex;align-items:flex-start;gap:9px;font-weight:500;line-height:1.4}
+.check input{width:auto;margin:2px 0 0}
+button{grid-column:1/-1;border:2px solid var(--gold);border-radius:30px;background:#bd1d2d;color:white;padding:14px;font-size:18px;font-weight:900;cursor:pointer}
+button:hover,.cta:hover{filter:brightness(1.06);transform:translateY(-1px)}
+.note{font-size:12px;color:#53677c;line-height:1.5}
+.status{margin:0;text-align:center;font-weight:700;line-height:1.5}
+.status.ok{color:#17693a}
+.status.err{color:#a51624}
+.status a{color:inherit}
+footer{text-align:center;padding:20px 10px;color:#153d6a;font-size:14px;line-height:1.7}
+.lightbox{position:fixed;inset:0;z-index:10;background:#061a31e8;display:none;align-items:center;justify-content:center;padding:18px}
+.lightbox.open{display:flex}.lightbox img{max-width:95vw;max-height:90vh;object-fit:contain}
+.lightbox button{position:absolute;right:18px;top:18px;width:auto;padding:8px 15px}
+@media(max-width:650px){.grid{grid-template-columns:1fr}form{grid-template-columns:1fr}.wide,form button{grid-column:auto}.hotspot{left:25%;top:78%;width:53%;height:8%}}
+@media(prefers-reduced-motion:reduce){.flake,.bulb{animation:none}html{scroll-behavior:auto}}
+</style></head>
+<body><main class="page">
+<!-- Постави редактираната основна картинка като originalna-snimka.png в същата папка. -->
+<section class="poster-wrap" aria-label="Оригинална коледна рекламна композиция">
+<img class="poster" src="https://content.app-sources.com/s/9426597055849883/uploads/Images/unnamed-5543389.png" alt="Оригиналната рекламна визия на коледния подаръчен комплект">
+<div class="snow" aria-hidden="true"><span class="flake">❄</span><span class="flake">❅</span><span class="flake">❄</span><span class="flake">❅</span><span class="flake">❄</span></div>
+<a class="hotspot" href="#zayavka" aria-label="Премини към заявка за коледен комплект" title="Заявете комплект"></a>
+</section>
+<div class="continuation">
+<div class="lights" aria-hidden="true"><i class="bulb"></i><i class="bulb"></i><i class="bulb"></i><i class="bulb"></i><i class="bulb"></i></div>
+<div class="intro"><h2>Коледната подготовка може да бъде по-бърза и лесна</h2>
+<p>Тържество, сценарий, репетиции и подаръци — преди Коледа задачите са много. Предлагаме готово празнично решение, с което децата получават общ подарък, а организацията става по-лесна.</p></div>
+<!-- Постави PNG изображението на продуктите като originalni-produkti.png в същата папка. -->
+<section class="panel"><h2>Какво получавате в комплекта?</h2>
+<img class="product-pic" id="products" tabindex="0" src="https://content.app-sources.com/s/9426597055849883/uploads/Images/download_1-4326970.png" alt="Оригиналните PNG изображения на коледните книжки и елементи от комплекта" title="Натиснете за увеличаване">
+<div class="grid">
+<div class="tile"><b>„Коледата оцвети“</b>Книжка със стикери, стихотворения, картинки за оцветяване и забавни задачки.</div>
+<div class="tile"><b>„Тръгна Мечо за елхичка“</b>Стихотворна приказка с картинки за оцветяване, стикери и забавни задачки.</div>
+<div class="tile"><b>Сглобяем 3D модел</b>със сцената на Рождество Христово.</div>
+<div class="tile"><b>Две картички</b>2 картички и 4 котета за изрязване и сглобяване</div>
+<div class="tile"><b>Пъзел на Дядо Коледа</b>20 части.</div>
+<div class="tile"><b>Линийка</b>Празнична линийка за изрязване.</div>
+</div></section>
+<section class="panel"><h2>Комплектът развива</h2><div class="grid">
+<div class="tile">✓ Фината моторика и творческите умения</div>
+<div class="tile">✓ Концентрацията и логическото мислене</div>
+<div class="tile">✓ Любовта към четенето и традициите</div>
+</div><p style="text-align:center"><b>Подходящ за деца от 4 до 11 години.</b></p></section>
+<section class="offer"><div>Специална цена при по-голяма поръчка</div><strong>10 € за комплект</strong><div>При поръчка над 20 броя · с включен ДДС</div><p>За други количества — свържете се с нас за уточняване на цената.</p><a class="cta" href="#zayavka">Изпратете заявка</a></section>
+<section class="panel faq"><h2>Често задавани въпроси</h2>
+<details><summary>За кого е подходящ комплектът?</summary><p>За училища, детски градини и образователни центрове. Подходящ е за деца от 4 до 11 години.</p></details>
+<details><summary>Каква е цената?</summary><p>10 € за комплект при поръчка над 20 броя. За други количества цената се уточнява индивидуално. Цената е с включен ДДС.</p></details>
+<details><summary>Кога да направим заявка?</summary><p>Заявки се приемат поне 4 дни преди желаната дата на доставка.</p></details>
+<details><summary>Как се заплаща?</summary><p>Плащане при получаване на доставката.</p></details>
+<details><summary>Колко време отнема изпълнението?</summary><p>До 5 работни дни след приемане на заявката.</p></details></section>
+<section class="panel" id="zayavka"><h2>Заявете коледните подаръци</h2>
+<p style="text-align:center">Попълнете формата. Ще се свържем с вас за уточняване на заявката.</p>
+<form id="order">
+<label>Училище / детска градина<input name="organization" required placeholder="Име на организацията"></label>
+<label>Лице за контакт<input name="contact" required placeholder="Име и фамилия"></label>
+<label>Телефон<input name="phone" type="tel" placeholder="Телефон за връзка"></label>
+<label>Имейл<input name="email" type="email" required placeholder="Електронна поща"></label>
+<label>Брой комплекти<input name="quantity" type="number" min="1" required placeholder="Количество"></label>
+<label>Желана дата на доставка<input name="date" type="date"></label>
+<label class="wide">Адрес за доставка<input name="address" placeholder="Град, улица, номер"></label>
+<label class="wide check"><input name="no_call" type="checkbox"> Не желая телефонно обаждане за потвърждение. Моля, свържете се с мен по имейл.</label>
+<label class="wide">Допълнителна информация<textarea name="notes" rows="3" placeholder="По желание"></textarea></label>
+<button type="submit">Изпрати заявката</button>
+<p class="wide status" id="formStatus" role="status" aria-live="polite"></p></form>
+<footer><b>Мечи за приятели</b><br>0888 72 71 99 · 0887 75 11 99<br>mechi.bear@abv.bg</footer>
+</div></main>
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Увеличено изображение на продуктите"><button type="button" id="closeLightbox">Затвори ✕</button><img src="originalni-produkti.png" alt="Оригинални продукти" onerror="this.onerror=null;this.src='https://content.app-sources.com/s/9426597055849883/uploads/Images/download_1-4326970.png'"></div>
+<script>
+const img=document.getElementById('products'), box=document.getElementById('lightbox');
+function openBox(){box.classList.add('open')}
+function closeBox(){box.classList.remove('open')}
+img.addEventListener('click',openBox);img.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();openBox()}});
+document.getElementById('closeLightbox').addEventListener('click',closeBox);
+box.addEventListener('click',e=>{if(e.target===box)closeBox()});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeBox()});
+/* Заявките се изпращат през Google Apps Script към mechi.books.1@gmail.com.
+   URL-ът е deployment на скрипта в apps-script/Code.gs. */
+const APPS_SCRIPT_URL='https://script.google.com/macros/s/AKfycbxof7LY7PEpopIwo7QkKIY72iMMfOxl4zEPC4VEa_IpQ_vQZ1Em9QinaAblpe2De-cL/exec';
+const LABELS={organization:'Училище / детска градина',contact:'Лице за контакт',phone:'Телефон',email:'Имейл',quantity:'Брой комплекти',date:'Желана дата на доставка',address:'Адрес за доставка',notes:'Допълнителна информация'};
+const form=document.getElementById('order'),statusEl=document.getElementById('formStatus'),submitBtn=form.querySelector('button[type="submit"]');
+function setStatus(text,kind){statusEl.textContent=text;statusEl.className='wide status'+(kind?' '+kind:'');}
+function requestText(fields){
+ return Object.entries(fields).map(([k,v])=>k+': '+v).join('\n');
+}
+async function sendRequest(subject,fields){
+ await fetch(APPS_SCRIPT_URL,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(Object.assign({__subject:subject},fields))});
+}
+form.addEventListener('submit',async e=>{
+ e.preventDefault();
+ const data=new FormData(form);
+ const org=data.get('organization')||'без организация';
+ const fields={};
+ for(const [key,value] of data.entries()){
+  if(key==='no_call')continue;
+  if(String(value).trim()!=='')fields[LABELS[key]||key]=value;
+ }
+ fields['Без телефонно обаждане']=form.elements.no_call.checked?'да, свържете се по имейл':'не';
+ const subject='Заявка за коледен комплект — '+org;
+ submitBtn.disabled=true;
+ setStatus('Изпращаме заявката…');
+ try{
+  await sendRequest(subject,fields);
+  setStatus('Благодарим! Заявката е изпратена. Ще се свържем с вас, за да я потвърдим.','ok');
+  form.reset();
+ }catch(error){
+  const mail='mailto:mechi.books.1@gmail.com?subject='+encodeURIComponent(subject)+'&body='+encodeURIComponent(requestText(fields));
+  statusEl.className='wide status err';
+  statusEl.textContent='Заявката не беше изпратена. Опитайте отново или ';
+  const link=document.createElement('a');
+  link.href=mail;link.textContent='изпратете я по имейл';
+  statusEl.append(link,'.');
+ }finally{submitBtn.disabled=false;}
+});
+</script></body></html>
